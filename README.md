@@ -52,4 +52,4 @@ Connect your GitHub repo
 Deploy your indian_weather.py
 
 Share the app using the public URL generated
-
+link: http://localhost:8501/
