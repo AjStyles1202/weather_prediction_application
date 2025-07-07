@@ -1,11 +1,13 @@
 import streamlit as st
 import pandas as pd
-import pickle
+import joblib
+import gzip
 import plotly.graph_objs as go
 from datetime import datetime, timedelta
 
 # Load model and data
-model = pickle.load(open("weather_multi_output_model.pkl", "rb"))
+with gzip.open("weather_model_compressed.pkl.gz", "rb") as f:
+    model = joblib.load(f)
 df = pd.read_csv("Indian_citites_1990_2022_weather.csv")
 df.dropna(subset=["tmax", "tmin", "tavg", "prcp", "Location"], inplace=True)
 df["time"] = pd.to_datetime(df["time"])
